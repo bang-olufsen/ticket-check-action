@@ -52,6 +52,7 @@ async function run(): Promise<void> {
         return;
       }
 
+      const ticketPrefix = matchArray.groups?.ticketPrefix;
       const ticketNumber = matchArray.groups?.ticketNumber;
 
       if (!ticketNumber) {
@@ -64,6 +65,10 @@ async function run(): Promise<void> {
         debug('invalid ticketLink', 'ticketLink must include "%ticketNumber%" variable to post ticket link.');
 
         return;
+      }
+
+      if (ticketLink.includes('%ticketPrefix%')) {
+        ticketLink.replace('%ticketPrefix%', ticketPrefix);
       }
 
       const linkToTicket = ticketLink.replace('%ticketNumber%', ticketNumber);
