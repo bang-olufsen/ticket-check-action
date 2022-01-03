@@ -69,8 +69,8 @@ async function run(): Promise<void> {
 
       var linkToTicket = ticketLink.replace('%ticketNumber%', ticketNumber);
 
-      if (ticketLink.includes('%ticketPrefix%')) {
-        linkToTicket = ticketLink.replace('%ticketPrefix%', ticketPrefix);
+      if (linkToTicket.includes('%ticketPrefix%')) {
+        linkToTicket = linkToTicket.replace('%ticketPrefix%', ticketPrefix);
       }
 
       const currentReviews = await client.pulls.listReviews({
