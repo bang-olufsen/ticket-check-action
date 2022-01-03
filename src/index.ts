@@ -67,11 +67,11 @@ async function run(): Promise<void> {
         return;
       }
 
-      if (ticketLink.includes('%ticketPrefix%')) {
-        ticketLink.replace('%ticketPrefix%', ticketPrefix);
-      }
+      var linkToTicket = ticketLink.replace('%ticketNumber%', ticketNumber);
 
-      const linkToTicket = ticketLink.replace('%ticketNumber%', ticketNumber);
+      if (ticketLink.includes('%ticketPrefix%')) {
+        linkToTicket = ticketLink.replace('%ticketPrefix%', ticketPrefix);
+      }
 
       const currentReviews = await client.pulls.listReviews({
         owner,
