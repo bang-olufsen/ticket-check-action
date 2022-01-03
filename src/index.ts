@@ -67,7 +67,7 @@ async function run(): Promise<void> {
         return;
       }
 
-      var linkToTicket = ticketLink.replace('%ticketNumber%', ticketNumber);
+      let linkToTicket = ticketLink.replace('%ticketNumber%', ticketNumber);
 
       if (linkToTicket.includes('%ticketPrefix%')) {
         linkToTicket = linkToTicket.replace('%ticketPrefix%', ticketPrefix);
