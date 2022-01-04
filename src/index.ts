@@ -52,6 +52,7 @@ async function run(): Promise<void> {
         return;
       }
 
+      const ticketPrefix = matchArray.groups?.ticketPrefix;
       const ticketNumber = matchArray.groups?.ticketNumber;
 
       if (!ticketNumber) {
@@ -66,7 +67,11 @@ async function run(): Promise<void> {
         return;
       }
 
-      const linkToTicket = ticketLink.replace('%ticketNumber%', ticketNumber);
+      let linkToTicket = ticketLink.replace('%ticketNumber%', ticketNumber);
+
+      if (ticketPrefix && linkToTicket.includes('%ticketPrefix%')) {
+        linkToTicket = linkToTicket.replace('%ticketPrefix%', ticketPrefix);
+      }
 
       const currentReviews = await client.pulls.listReviews({
         owner,

@@ -12,7 +12,7 @@ It can detect the ID in the title of the pull request, in the branch name, wheth
 
 If no ticket/issue ID is in the title, it will extract the ID from the branch or body and update the title for you. It will fail the check if no ticket ID is found anywhere.
 
-If a `ticketLink` input is provided and named groups `(?<ticketNumber>)` are used in regexes, a ticket link will be posted on a PR upon a successful match. This overrides the `quiet` option.
+If a `ticketLink` input is provided and named groups `(?<ticketNumber>)` are used in regexes, a ticket link will be posted on a PR upon a successful match. This overrides the `quiet` option. To support several prefixes on the same repository the named grups `(?<ticketPrefix>)` can also be used.
 
 ## Usage
 
